@@ -135,6 +135,10 @@ public abstract class BaseTree {
         }
     }
 
+    public static boolean isLog(Block block) {
+        return getTreeTypeByBlock(block) != null;
+    }
+
     public static BaseTree calculate(BlockBreakEvent event) {
 
         debug.i("calculating " + event.getBlock().getLocation().toString());

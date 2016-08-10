@@ -2,8 +2,9 @@ package me.itsatacoshop247.TreeAssist.blocklists;
 
 import me.itsatacoshop247.TreeAssist.core.TreeBlock;
 import me.itsatacoshop247.TreeAssist.core.Utils;
+import me.itsatacoshop247.TreeAssist.trees.BaseTree;
+
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -131,8 +132,7 @@ public class FlatFileBlockList implements BlockList {
                 continue;
             }
             Block bukkitBlock = block.getBukkitBlock();
-            if (bukkitBlock.getType() != Material.LOG &&
-                    bukkitBlock.getType() != Material.LOG_2) {
+            if (BaseTree.isLog(bukkitBlock)) {
                 removals.add(block);
             }
         }
