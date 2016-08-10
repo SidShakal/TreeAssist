@@ -132,7 +132,7 @@ public class FlatFileBlockList implements BlockList {
             }
             Block bukkitBlock = block.getBukkitBlock();
             if (bukkitBlock.getType() != Material.LOG &&
-                    !bukkitBlock.getType().name().equals(Material.LOG_2)) {
+                    bukkitBlock.getType() != Material.LOG_2) {
                 removals.add(block);
             }
         }
