@@ -13,19 +13,27 @@ public class TreeBlock implements ConfigurationSerializable {
     public final long time;
 
     public TreeBlock(final Block b, final long timestamp) {
-        x = b.getX();
-        y = b.getY();
-        z = b.getZ();
-        world = b.getWorld().getName();
-        time = timestamp;
+        this(b.getX(),
+             b.getY(),
+             b.getZ(),
+             b.getWorld().getName(),
+             timestamp);
     }
 
     public TreeBlock(final Map<String, Object> map) {
-        x = (Integer) map.get("x");
-        y = (Integer) map.get("y");
-        z = (Integer) map.get("z");
-        world = map.get("w").toString();
-        time = (Long) map.get("t");
+        this((Integer) map.get("x"),
+             (Integer) map.get("y"),
+             (Integer) map.get("z"),
+             map.get("w").toString(),
+             (Long) map.get("t"));
+    }
+
+    public TreeBlock(final int x, final int y, final int z, final String world, final long timestamp) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.world = world;
+        this.time = timestamp;
     }
 
     public Block getBukkitBlock() {
@@ -76,5 +84,9 @@ public class TreeBlock implements ConfigurationSerializable {
         result = prime * result + (y ^ y >>> 32);
         result = prime * result + (z ^ z >>> 32);
         return result;
+    }
+
+    public String getId() {
+        return x + ";" + y + ";" + z + ";" + world;
     }
 }
