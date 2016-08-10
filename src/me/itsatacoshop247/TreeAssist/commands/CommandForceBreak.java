@@ -2,6 +2,8 @@ package me.itsatacoshop247.TreeAssist.commands;
 
 import me.itsatacoshop247.TreeAssist.core.Language;
 import me.itsatacoshop247.TreeAssist.core.Utils;
+import me.itsatacoshop247.TreeAssist.trees.BaseTree;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -55,8 +57,7 @@ public class CommandForceBreak extends AbstractCommand {
                     nextBlock:
                     for (int z = -radius; z <= radius; z++) {
                         Block b = player.getLocation().add(x, y, z).getBlock();
-                        if (b.getType() == Material.LOG
-                                || b.getType() == Material.LOG_2) {
+                        if (BaseTree.isLog(b)) {
                             if (b.getRelative(BlockFace.DOWN).getType() == Material.DIRT ||
                                     b.getRelative(BlockFace.DOWN).getType() == Material.GRASS ||
                                     b.getRelative(BlockFace.DOWN).getType() == Material.SAND) {
